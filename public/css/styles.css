@@ -4,3 +4,84 @@
 *:after {
   box-sizing: border-box;
 }
+body{
+  justify-items: center;
+}
+#top-header{
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+.siteName{
+  grid-column: 0/1;
+  color: black;
+  font-size: 30px;
+  font-style: bold;
+}
+.siteName a:visited{
+  color: black;
+}
+#tools{
+  justify-content: right;
+  grid-column: 3/4;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: whitesmoke;
+  padding: 10px;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.heroText{
+  background: rgba(255, 255, 255, 0.4);
+  color: rgb(0, 183, 228);
+  position: absolute;
+  top:25%;
+  left: 2%;
+}
+.ownButton{
+  padding: 10px;
+  background-color: rgb(0, 183, 228);
+}
+.upgrades{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.upgrades img{
+  padding: 25px;
+  background: rgb(0, 183, 228);
+  border: 3px solid black;
+}
+#bumper{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+#flame{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+#flux{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+#hub{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
