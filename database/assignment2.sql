@@ -14,7 +14,23 @@ WHERE account_firstname = 'Tony'
 --to see if it was deleted
 SELECT * FROM account;
 
---gm hummer change--
+--gm hummer change
 UPDATE "inventory"
 SET inv_description = REPLACE(inv_description, 'the small interiors', 'a huge interior')
 WHERE inv_id = 70;
+
+--inner join
+SELECT
+inv_make,
+inv_model,
+classification_name
+FROM
+inventory as inv
+INNER JOIN	
+classification
+on inv.classification_id = 2;
+
+-- add vehicle file path
+update inventory
+set inv_image =
+REPLACE(inv_image, '/images', '/images/vehicles');

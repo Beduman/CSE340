@@ -1,4 +1,6 @@
-CREATE TYPE public.sample AS ENUM
+--use this to rebuild database
+
+CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
@@ -234,3 +236,14 @@ VALUES   (
     'White',
     5
   );
+
+
+--gm hummer change
+UPDATE "inventory"
+SET inv_description = REPLACE(inv_description, 'the small interiors', 'a huge interior')
+WHERE inv_id = 70;
+
+-- add vehicle file path
+update inventory
+set inv_image =
+REPLACE(inv_image, '/images', '/images/vehicles');
