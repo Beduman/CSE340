@@ -17,7 +17,7 @@ SELECT * FROM account;
 --gm hummer change
 UPDATE "inventory"
 SET inv_description = REPLACE(inv_description, 'the small interiors', 'a huge interior')
-WHERE inv_id = 70;
+WHERE inv_model = 'Hummer';
 
 --inner join
 SELECT
