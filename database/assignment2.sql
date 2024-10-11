@@ -28,9 +28,15 @@ FROM
 inventory as inv
 INNER JOIN	
 classification
-on inv.classification_id = 2;
+ON
+inv.classification_id = classification.classification_id
+WHERE
+inv.classification_id = 2;;
 
 -- add vehicle file path
 update inventory
+update 
 set inv_image =
-REPLACE(inv_image, '/images', '/images/vehicles');
+REPLACE(inv_image, '/images', '/images/vehicles'), 
+inv_thumbnail =
+REPLACE(inv_thumbnail, '/images', '/images/vehicles');
