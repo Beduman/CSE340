@@ -58,7 +58,7 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-Util.buildDetailView = async function(vehicle) {
+Util.buildDetailView = function(vehicle) {
   let detailView = `
   <div class="detailView">
       <img src="${vehicle.inv_image}" alt="Image of vehicle">

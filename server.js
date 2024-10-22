@@ -15,6 +15,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const utilities = require("./utilities/")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 
 
 /* ***********************

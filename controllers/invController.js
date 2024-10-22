@@ -23,15 +23,20 @@ invCont.buildByClassificationId = async function (req, res, next) {
   Build detailed inventory view
 */
 invCont.buildByInventoryId = async function (req, res, next) {
-  const inventory_id = req.params.inv_id
-  const data = await invModel.getInventoryByInventoryId(inventory_id)
-  const grid = await utilities.buildDetailView(data)
-  let nav = await utilities.getNav()
-  const vehicleName = `${vehicle.inv_make}, ${vehicle.inv_model}`
-  res.render("./inventory/inventory", {
-    title: vehicleName,
-    nav,
-    content,
+  try{
+    const inventory_id = req.params.inv_id
+    const data = await invModel.getInventoryByInventoryId(inventory_id)
+    const grid = await utilities.buildDetailView(data)
+    let nav = await utilities.getNav()
+    const vehicleName = `${vehicle.inv_make}, ${vehicle.inv_model}`
+    res.render("./inventory/inventory", {
+      title: vehicleName,
+      nav,
+      grid,
   })
+  }
+  catch (error) {console.error(error, ' Error with inventory')
+    next(error);}
 }
+
 module.exports = invCont
