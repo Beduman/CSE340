@@ -1,10 +1,10 @@
 // Needed Resources 
 const express = require("express")
 const router = new express.Router() 
-const utility = require("../utilities/index")
+const utilities = require("../utilities/index")
 const accountController = require("../controllers/accountController")
 
-router.get("/type/:accountId", accountController.buildLogin);
+router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 
 module.exports = router;
