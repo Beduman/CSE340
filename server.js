@@ -11,6 +11,7 @@ const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
+const bodyParser = require("body-parser")
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const utilities = require("./utilities/")
@@ -32,6 +33,7 @@ app.use(session({
   name: 'sessionId',
 }))
 
+
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
@@ -39,12 +41,19 @@ app.use(function(req, res, next){
   next()
 })
 
+//body parser middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+
+
 /* ***********************
  * Routes
  *************************/
