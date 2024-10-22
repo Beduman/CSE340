@@ -38,7 +38,7 @@ async function getInventoryByInventoryId(inv_id) {
     const data = await pool.query(
       `SELECT * FROM public.inventory AS i 
       WHERE i.inv_id = $1`,
-      [inventory_id]
+      [inv_id]
     )
     return data.rows
   } catch (error) {
