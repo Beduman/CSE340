@@ -56,9 +56,9 @@ app.get("/", function(req, res){
   res.render("index", {title: "Home"})
 })
 // Inventory routes
-app.use("/inv", inventoryRoute)
+app.use("/inv", require("./routes/inventoryRoute"))
 // account route
-app.use("/account", accountRoute)
+app.use("/account", require("./routes/accountRoute"))
 
 
 // File Not Found Route - must be last route in list

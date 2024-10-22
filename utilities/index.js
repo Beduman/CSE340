@@ -58,17 +58,17 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-Util.buildDetailView = function(vehicle) {
-  let detailView = `
+Util.buildDetailView = function(data) {
+  const detailView = `
   <div class="detailView">
-      <img src="${vehicle.inv_image}" alt="Image of vehicle">
+      <img src="${data.inv_image}" alt="Image of vehicle">
       <div class="vehicle-info">
-          <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
-          <p>Year: ${vehicle.inv_year}</p>
-          <p>Price: $${vehicle.inv_price}</p>
-          <p>Miles: ${vehicle.inv_miles} miles</p>
-          <p>Color: ${vehicle.inv_color}</p>
-          <p>Description: ${vehicle.inv_description}</p>
+          <h2>${data.inv_make} ${data.inv_model}</h2>
+          <p>Year: ${data.inv_year}</p>
+          <p>Price: $${data.inv_price}</p>
+          <p>Miles: ${data.inv_miles} miles</p>
+          <p>Color: ${data.inv_color}</p>
+          <p>Description: ${data.inv_description}</p>
       </div>
   </div>
   `;
