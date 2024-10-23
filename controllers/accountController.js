@@ -8,6 +8,7 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
       title: "Login",
       nav,
+      errors:null,
     })
   }
 
@@ -19,7 +20,9 @@ async function buildRegister(req, res, next) {
   res.render("account/register", {
     title: "Register",
     nav,
+    errors:null,
   })
+  console.log("accountcontrollerstart")
 }
 
 /* ****************************************
@@ -27,6 +30,7 @@ async function buildRegister(req, res, next) {
 * *************************************** */
 async function registerAccount(req, res) {
   let nav = await utilities.getNav()
+  console.log("accountregistercontrollerstart")
   const { account_firstname, account_lastname, account_email, account_password } = req.body
 
   const regResult = await accountModel.registerAccount(
