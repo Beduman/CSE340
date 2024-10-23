@@ -8,18 +8,18 @@
 
 <% messages() %>
 
-<form>
+<form id="loginForm" action="/account/login" method="post">
     <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" name="account_name" required>
+        <input type="text" id="name" name="account_firstname" required value="<%= locals.account_firstname %>">
       </div>
       <div>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="account_email" required pattern="(?=.*[@])" placeholder="Enter a valid email address">
+        <input type="email" id="email" name="account_email" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" placeholder="Enter a valid email address" value="<%= locals.account_email %>">
       </div>
       <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+        <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" >
       </div>
       <button>Login</button>
 </form>
