@@ -1,0 +1,18 @@
+<%# Content Heading %>
+
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<% messages() %>
+
+<form>
+    <fieldset>
+        <label>Make</label>
+        <input name="inv_model" required>
+        <label>Model</label>
+        <input name="inv_name" required>
+    </fieldset>
+</form>

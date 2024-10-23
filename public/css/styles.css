@@ -85,3 +85,11 @@ nav ul li {
   grid-column: 2/3;
   grid-row: 2/3;
 }
+
+input:required:invalid, input:focus:invalid {
+  /* insert your own styles for invalid form input */
+ }
+
+ input:required:valid {
+  /* insert your own styles for valid form input */
+ }
