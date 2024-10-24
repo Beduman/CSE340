@@ -8,11 +8,10 @@
 
 <% messages() %>
 
-<form>
+<form id="loginForm" action="/account/login" method="post">
     <fieldset>
-        <label>Make</label>
-        <input name="classification_model" required>
-        <label>Model</label>
+        <label>Classification Name</label>
         <input name="classification_name" required>
     </fieldset>
+    <button>Submit</button>
 </form>

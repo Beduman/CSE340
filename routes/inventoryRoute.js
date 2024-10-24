@@ -15,9 +15,13 @@ router.get("/", utilities.handleErrors(invController.buildManagement));
 
 router.get("/addClassification", utilities.handleErrors(invController.buildClassificationManager));
 
-router.get("/addInventory", utilities.handleErrors(invController.buildInvetoryManager));
+router.get("/addInventory", utilities.handleErrors(invController.buildInventoryManager));
 
 router.get("/error", utilities.handleErrors(invController.buildError));
+
+router.post('/addClassification', utilities.handleErrors(invController.registerClassification));
+
+router.post("/addInventory", utilities.handleErrors(invController.registerInventory));
 
 module.exports = router;
 

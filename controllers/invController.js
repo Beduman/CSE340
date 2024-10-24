@@ -46,6 +46,26 @@ invCont.buildByInventoryId = async function (req, res, next) {
   }
 }
 
+//error view
+
+invCont.buildError = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("./error/error", {
+      title: "Management",
+      nav,
+      errors: null,
+    })
+  }
+  catch (error) {
+    console.error(error, ' Error')
+    next(error);
+  }
+}
+
+
+//management view
+
 invCont.buildManagement = async function (req, res, next) {
   try {
     let nav = await utilities.getNav()
@@ -91,18 +111,34 @@ invCont.buildInventoryManager = async function (req, res, next) {
   }
 }
 
-invCont.buildError = async function (req, res, next) {
-  try {
-    let nav = await utilities.getNav()
-    res.render("./error/error", {
-      title: "Management",
+/* ****************************************
+*  Process Registration
+* *************************************** */
+async function registerAccount(req, res) {
+  let nav = await utilities.getNav()
+  const { account_firstname, account_lastname, account_email, account_password } = req.body
+
+  const regResult = await accountModel.registerClassification(
+    classification_name
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you\'re registered ${classification_name}. Please log in.`
+    )
+    res.status(201).render("inventory/add-classification", {
+      title: "Success",
       nav,
-      errors: null,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Classification Registration",
+      nav,
     })
   }
-  catch (error) {
-    console.error(error, ' Error with management')
-    next(error);
-  }
 }
+
+
 module.exports = invCont
