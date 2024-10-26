@@ -114,7 +114,7 @@ invCont.buildInventoryManager = async function (req, res, next) {
 /* ****************************************
 *  Process Registration
 * *************************************** */
-async function registerClassification(req, res) {
+ invCont.registerClassification = async function(req, res) {
   let nav = await utilities.getNav()
   const { classification_name } = req.body
 
@@ -125,7 +125,7 @@ async function registerClassification(req, res) {
   if (regResult) {
     req.flash(
       "notice",
-      `Congratulations, you\'re registered ${classification_name}. Please log in.`
+      `Congratulations, you registered ${classification_name}. Please log in.`
     )
     res.status(201).render("inventory/add-classification", {
       title: "Success",
@@ -140,7 +140,7 @@ async function registerClassification(req, res) {
   }
 }
 
-async function registerInventory(req, res) {
+invCont.registerInventory = async function(req, res) {
   let nav = await utilities.getNav()
   const { inv_make, inv_model } = req.body
 
@@ -151,7 +151,7 @@ async function registerInventory(req, res) {
   if (regResult) {
     req.flash(
       "notice",
-      `Congratulations, you\'re registered ${inventory_name}. Please log in.`
+      `Congratulations, you registered ${inventory_name}. Please log in.`
     )
     res.status(201).render("inventory/add-Inventory", {
       title: "Success",
