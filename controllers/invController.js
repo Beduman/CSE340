@@ -114,11 +114,11 @@ invCont.buildInventoryManager = async function (req, res, next) {
 /* ****************************************
 *  Process Registration
 * *************************************** */
-async function registerAccount(req, res) {
+async function registerClassification(req, res) {
   let nav = await utilities.getNav()
-  const { account_firstname, account_lastname, account_email, account_password } = req.body
+  const { classification_name } = req.body
 
-  const regResult = await accountModel.registerClassification(
+  const regResult = await invModel.registerClassification(
     classification_name
   )
 
@@ -135,6 +135,32 @@ async function registerAccount(req, res) {
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("inventory/add-classification", {
       title: "Classification Registration",
+      nav,
+    })
+  }
+}
+
+async function registerInventory(req, res) {
+  let nav = await utilities.getNav()
+  const { inv_make, inv_model } = req.body
+
+  const regResult = await invModel.registerInventory(
+    inventory_name
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations, you\'re registered ${inventory_name}. Please log in.`
+    )
+    res.status(201).render("inventory/add-Inventory", {
+      title: "Success",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("inventory/add-inventory", {
+      title: "Inventory Registration",
       nav,
     })
   }

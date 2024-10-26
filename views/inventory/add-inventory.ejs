@@ -7,3 +7,12 @@
     } %>
 
 <% messages() %>
+
+<form id="loginForm" action="/account/login" method="post">
+    <fieldset>
+        <label>Make</label>
+        <input name="inv_make" required>
+        <label>Model</label>
+        <input name="inv_model" required>
+    </fieldset>
+</form>

@@ -44,19 +44,19 @@ async function getInventoryByInventoryId(inv_id) {
   }
 }
 
-async function registerClassification(account_firstname, account_lastname, account_email, account_password){
+async function registerClassification(classification_name){
   try {
-    const sql = "INSERT INTO account (classification_name) VALUES ($1, $2, $3, $4, 'Client') RETURNING *"
-    return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password])
+    const sql = "INSERT INTO classification (classification_name) VALUES ($1, $2, $3, $4, 'Client') RETURNING *"
+    return await pool.query(sql, [classification_name])
   } catch (error) {
     return error.message
   }
 }
 
-async function registerInventory(account_firstname, account_lastname, account_email, account_password){
+async function registerInventory(inv_make, inv_model){
   try {
-    const sql = "INSERT INTO account (inv_name, inv_model) VALUES ($1, $2, $3, $4, 'Client') RETURNING *"
-    return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password])
+    const sql = "INSERT INTO inventory (inv_name, inv_model) VALUES ($1, $2, $3, $4, 'Client') RETURNING *"
+    return await pool.query(sql, [inv_make, inv_model])
   } catch (error) {
     return error.message
   }
