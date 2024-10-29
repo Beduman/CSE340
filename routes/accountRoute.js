@@ -11,13 +11,15 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 router.post('/register', regValidate.registationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 
-router.post('/', utilities.handleErrors(accountController.getAccountByEmail));
+router.post('/', utilities.handleErrors(accountController.accountLogin));
 
 // Process the login attempt
 router.post(
-    "/login",
+  "/login",
+  utilities.handleErrors(accountController.accountLogin)
+)
 
-    utilities.handleErrors(accountController.accountLogin)
-  )
+//management
+router.get("/", utilities.handleErrors(accountController.buildManagement));
 
 module.exports = router;
